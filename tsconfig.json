@@ -3,12 +3,9 @@
 		"outDir": "public/scripts",
 		"target": "es2015",
 		"module": "es2015",
-		"moduleResolution": "node"
-	},
-	"include": [
-		"**/*.ts"
-	],
-	"files": [
-		"src/index.ts"
-	]
+		"moduleResolution": "node",
+		"types": ["node"],
+		"allowUmdGlobalAccess": false
+	}
+
 }

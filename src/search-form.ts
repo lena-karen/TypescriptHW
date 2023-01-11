@@ -1,16 +1,13 @@
+import formatDate from './formatDate.js'
 import { renderBlock } from './lib.js'
-
-import { format, addMonths, endOfMonth, addDays } from 'date-fns'
-
 
 export function renderSearchFormBlock (checkInDate, checkOutDate) {
 
-  const minDate = format(new Date(), 'yyyy-MM-dd')
-  const maxDate = format(endOfMonth(addMonths(new Date(), 1)), 'yyyy-MM-dd')
+  const date = new Date()
 
-  const checkInValue = format(addDays(new Date(), 1), 'yyyy-MM-dd')
-  const checkOutValue = format(addDays(new Date(), 3), 'yyyy-MM-dd')
- 
+  const minDate = formatDate(date)
+  const maxDate = formatDate(new Date(date.getFullYear(), date.getMonth() + 2, 0))
+
   renderBlock(
     'search-form-block',
     `
@@ -33,7 +30,7 @@ export function renderSearchFormBlock (checkInDate, checkOutDate) {
             <input 
               id="check-in-date" 
               type="date" 
-              value = ${checkInValue}
+              value = ${checkInDate}
               min=${minDate} 
               max=${maxDate} 
               name="checkin" 
@@ -44,7 +41,7 @@ export function renderSearchFormBlock (checkInDate, checkOutDate) {
             <input 
               id="check-out-date" 
               type="date" 
-              value = ${checkOutValue}
+              value = ${checkOutDate}
               min=${minDate} 
               max=${maxDate} 
               name="checkout" 
