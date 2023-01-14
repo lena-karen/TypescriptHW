@@ -1,6 +1,25 @@
 import formatDate from './formatDate.js'
+
 import { renderBlock } from './lib.js'
 
+export interface SearchFormData {
+  checkIn: Date
+  checkOut: Date
+  maxPrice: number
+}
+const form = document.getElementById('search-form-block')
+form.addEventListener('submit', submit)
+
+function search(data: SearchFormData):void {
+  console.log(data.checkIn, data.checkOut, data.maxPrice)
+}
+function submit(event): void {
+  event.preventDefault();
+  const { checkin, checkout, price } = event.target
+
+  search({checkIn: checkin.value, checkOut: checkout.value, maxPrice: price.value})
+
+}
 export function renderSearchFormBlock (checkInDate, checkOutDate) {
 
   const date = new Date()
@@ -60,3 +79,7 @@ export function renderSearchFormBlock (checkInDate, checkOutDate) {
     `
   )
 }
+function e(e: any) {
+  throw new Error('Function not implemented.')
+}
+
