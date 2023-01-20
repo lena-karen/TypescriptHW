@@ -1,6 +1,6 @@
 export function renderBlock (elementId, html) {
   const element = document.getElementById(elementId)
-  //console.log('element')
+
   element.innerHTML = html
 }
 
